@@ -13,6 +13,8 @@ import time
 import requests
 import urllib2
 
+from myapscheduler import add_asp_scheduler
+
 
 class DoubanSpider(Process):
     def __init__(self, url, q):
@@ -169,25 +171,29 @@ class DianshijuThread(Thread):
 
 
 if __name__ == "__main__":
-    start = time.time()
+    # start = time.time()
 
     # main()
     # get_ftp = Dianshiju()
     #
     # get_ftp.main(98338)
-    testurl = "http://www.dy2018.com/html/tv/hytv/index.html"
-    base_url = "http://www.dy2018.com/html/tv/hytv/index_{}.html"
-    url_list = [base_url.format(num) for num in range(2, 28)]
-    url_list.append(testurl)
+    # testurl = "http://www.dy2018.com/html/tv/hytv/index.html"
+    # base_url = "http://www.dy2018.com/html/tv/hytv/index_{}.html"
+    # url_list = [base_url.format(num) for num in range(2, 28)]
+    # url_list.append(testurl)
+    #
+    # thread_list = []
+    #
+    # for url in url_list:
+    #     get_url = DianshijuThread(url, 'mytest')
+    #     get_url.start()
+    #     thread_list.append(get_url)
+    #
+    # for p in thread_list:
+    #     p.join()
+    # print u"[INFO]耗时:{}".format(time.time() - start)
 
-    thread_list = []
-
-    for url in url_list:
-        get_url = DianshijuThread(url, 'mytest')
-        get_url.start()
-        thread_list.append(get_url)
-
-    for p in thread_list:
-        p.join()
-    print u"[INFO]耗时:{}".format(time.time() - start)
+    for i in range(5, 10):
+        dt = "2017-10-19 14:5{}:00".format(i)
+        add_asp_scheduler(dt, str(i))
 
